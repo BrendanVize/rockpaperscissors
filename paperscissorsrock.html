@@ -4,20 +4,7 @@
 <body>
   <script>
 
-
-
-  function computerPlay (){
-   var x=Math.floor((Math.random()*3));
-   if (x==0) {
-   return "Rock";
-   }
-   else if (x==1) {
-   return "Paper"
-   }
-   else {
-   return "Scissors"
-   }
-  }
+ 
   
  function playRound(playerSelection, computerSelection) {
     if (playerSelection=='rock'){ 
@@ -53,13 +40,32 @@
       return "It's a draw!"
       }
     }
-   else return "Your choice was invalid" 
+   
   }
 
   function playerPlay(){
    var text=prompt ('Paper, scissors, or rock?');
-   return text.toLowerCase();
-}	
+   var lowtext=text.toLowerCase();
+   if ((lowtext!='paper')&&(lowtext!='scissors')&&(lowtext!='rock')){
+   console.log ("You entered an invalid response");
+   }
+   else {
+   return lowtext;
+   } 
+  }
+
+  function computerPlay (){
+   var x=Math.floor((Math.random()*3));
+   if (x==0) {
+   return "Rock";
+   }
+   else if (x==1) {
+   return "Paper"
+   }
+   else {
+   return "Scissors"
+   }
+  }	
 
 
 const playerSelection = playerPlay()
