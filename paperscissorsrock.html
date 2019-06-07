@@ -4,44 +4,64 @@
 <body>
   <script>
 
- 
-  
- function playRound(playerSelection, computerSelection) {
+function game(){
+   var roundOne=playRound('rock', computerPlay());
+   console.log ("Round one result: "+roundOne);
+   var roundTwo=playRound('paper', computerPlay());
+   console.log ("Round two result: "+roundTwo);
+   var roundThree=playRound('paper', computerPlay());
+   console.log ("Round three result: "+roundThree);
+   var roundFour=playRound('paper', computerPlay());
+   console.log ("Round four result: "+roundFour);
+   var roundFive=playRound('paper', computerPlay());
+   console.log ("Round five result: "+roundFive);
+   var result=getResult(roundOne, roundTwo, roundThree, roundFour, roundFive);
+   console.log ("Overall result:"+result); 
+}
+
+ function getResult(a, b, c, d, e) {
+    return (a+b+c+d+e);
+}
+
+
+  function playRound(playerSelection, computerSelection) {
+    
     if (playerSelection=='rock'){ 
       if (computerSelection=="Scissors"){ 
-      return "You win! Rock beats scissors"
+      return "Win"
       } 
       else if (computerSelection=="Paper"){ 
-      return "You lose! Paper beats rock"
+      return "Lose"
       }  
       else {
-      return "It's a draw!"
+      return "Draw"
       }
     }
-   if (playerSelection=='scissors'){ 
+   
+    if (playerSelection=='scissors'){ 
       if (computerSelection=="Paper"){ 
-      return "You win! Scissors beats paper"
+      return "Win"
       } 
       else if (computerSelection=="Rock"){ 
-      return "You lose! Rock beats scissors"
+      return "Lose"
       }  
       else {
-      return "It's a draw!"
+      return "Draw"
       }
     }
    if (playerSelection=='paper'){ 
       if (computerSelection=="Rock"){ 
-      return "You win! Paper beats rock"
+      return "Win"
       } 
       else if (computerSelection=="Scissors"){ 
-      return "You lose! Scissors beats paper"
+      return "Lose"
       }  
       else {
-      return "It's a draw!"
+      return "Draw"
       }
     }
-   
-  }
+  } 
+
 
   function playerPlay(){
    var text=prompt ('Paper, scissors, or rock?');
@@ -54,7 +74,7 @@
    } 
   }
 
-  function computerPlay (){
+  function computerPlay(){
    var x=Math.floor((Math.random()*3));
    if (x==0) {
    return "Rock";
@@ -68,12 +88,9 @@
   }	
 
 
-const playerSelection = playerPlay()
-const computerSelection = computerPlay()
-console.log(playRound(playerSelection, computerSelection)) 
 
 
-
+ 
   </script>
 
 </body>
