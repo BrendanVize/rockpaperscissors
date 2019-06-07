@@ -5,59 +5,71 @@
   <script>
 
 function game(){
-   var roundOne=playRound('rock', computerPlay());
-   console.log ("Round one result: "+roundOne);
-   var roundTwo=playRound('paper', computerPlay());
-   console.log ("Round two result: "+roundTwo);
-   var roundThree=playRound('paper', computerPlay());
-   console.log ("Round three result: "+roundThree);
-   var roundFour=playRound('paper', computerPlay());
-   console.log ("Round four result: "+roundFour);
-   var roundFive=playRound('paper', computerPlay());
-   console.log ("Round five result: "+roundFive);
-   var result=getResult(roundOne, roundTwo, roundThree, roundFour, roundFive);
-   console.log ("Overall result:"+result); 
+   var roundOne=playRound(playerPlay(), computerPlay());
+   console.log ("Round one result: "+getResult(roundOne));
+   var roundTwo=playRound(playerPlay(), computerPlay());
+   console.log ("Round two result: "+getResult(roundTwo));
+   var roundThree=playRound(playerPlay(), computerPlay());
+   console.log ("Round three result: "+getResult(roundThree));
+   var roundFour=playRound(playerPlay(), computerPlay());
+   console.log ("Round four result: "+getResult(roundFour));
+   var roundFive=playRound(playerPlay(), computerPlay());
+   console.log ("Round five result: "+getResult(roundFive));
+   var numberResult=(Number(roundOne)+Number(roundTwo)+Number(roundThree)+Number(roundFour)+Number(roundFive));
+   var result=numberResult.toString();
+   console.log ("Overall result:"+getResult(result)); 
 }
 
- function getResult(a, b, c, d, e) {
-    return (a+b+c+d+e);
-}
+ function getResult(x) {
+    var playerTotal=x.substr(0,1);
+    var computerTotal=x.substr(1,1);
+    if (Number(playerTotal)>Number(computerTotal)){
+    return "Win";
+    } 
+    else if (Number(playerTotal)<Number(computerTotal)){
+    return "Lose";
+    } 
+    else {
+    return "Draw";
+    }
+    
+  }
 
 
   function playRound(playerSelection, computerSelection) {
     
     if (playerSelection=='rock'){ 
       if (computerSelection=="Scissors"){ 
-      return "Win"
+      return "10"
       } 
       else if (computerSelection=="Paper"){ 
-      return "Lose"
+      return "01"
       }  
       else {
-      return "Draw"
+      return "11"
       }
     }
    
     if (playerSelection=='scissors'){ 
       if (computerSelection=="Paper"){ 
-      return "Win"
+      return "10"
       } 
       else if (computerSelection=="Rock"){ 
-      return "Lose"
+      return "01"
       }  
       else {
-      return "Draw"
+      return "11"
       }
     }
    if (playerSelection=='paper'){ 
       if (computerSelection=="Rock"){ 
-      return "Win"
+      return "10"
       } 
       else if (computerSelection=="Scissors"){ 
-      return "Lose"
+      return "01"
       }  
       else {
-      return "Draw"
+      return "11"
       }
     }
   } 
